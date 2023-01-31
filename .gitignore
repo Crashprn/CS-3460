@@ -1,0 +1,14 @@
+# Ignore build files
+*/build
+*/Ubuild
+
+# Ignore Test
+*Test
+
+# Ignore visual studio
+.vs
+
+# Ignore zip files
+*.zip
+*.swp
+

@@ -1,0 +1,73 @@
+Word tree
+Requirements:
+needs to be able to add words to the tree
+	This means it traverses through the word tree creating nodes as necessary
+
+needs to be able to find words in the tree
+
+needs to be able to return a list of potential words from a partial up to a certain number of words
+
+returns the number of words stored in the tree
+
+Design:
+
+find( string word)
+	- set node equal to root
+	- loop through each letter in the word
+		- if a Tree Node for the index of the letter exists
+			- set the Tree Node to node
+		- else
+			- return False
+	- return isEndOfWord for final node
+
+add(string word)
+	- check find(word)
+		- if returns true do nothing
+	- else
+		- set node = root
+		- loop through each letter in word
+			- if a Tree Node at letter index exists for node
+				- set node to Tree Node at index
+			- else
+				- create Tree Node at letter index for node
+				- set that Tree Node to node
+		- set endOfWord for node to true
+		- size += 1
+
+
+predict(partial, howMany)
+	- initialize vector for Words to return
+	- set node to root
+	- loop through each letter in partial
+		- if Tree Node at index of letter exists
+			- set Tree Node to node
+		- else return Words
+	- make queue from vector of tree nodes
+	- add node to nodeQueue
+	- add string to wordQueue
+	- while Words.size < howMany
+		- SearchNode = nodeQueue.pop()
+		- SearchWord = wordQueue.pop()
+		- for each pointer in SearchNode children
+			- if pointer has a TreeNode
+				- add TreeNode to nodeQueue
+				- add SearchWord + (a+ index) to wordQueue
+				- if isEndOfWord
+					- add SearchWord + (a + index) to Words
+	- return Words
+
+
+
+TreeNode
+
+Design:
+
+isChildNull(index)
+	return *m_children[index] == null
+
+addChildAtIndex(index)
+	m_children[index] = TreeNode()
+
+getChildAtIndex(index)
+	return m_children[index]
+		
